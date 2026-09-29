@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Personal portfolio of Jezriel D. Alabastro — BSINT student, Java and C++ programmer, and digital animator from Basay, Negros Oriental.">
+<title>Home | Jezriel D. Alabastro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== MOBILE TOP BAR ===== -->
+<header class="topbar">
+  <a href="index.html" class="topbar-brand"><span class="brand-mark">JA</span> Jezriel D. Alabastro</a>
+  <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebar">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- ===== LEFT SIDEBAR NAVIGATION ===== -->
+<nav class="sidebar" id="sidebar" aria-label="Main navigation">
+  <div class="brand">
+    <span class="brand-mark">JA</span>
+    <span class="brand-name">Jezriel D.<small>Alabastro</small></span>
+  </div>
+
+  <ul class="nav-list">
+    <li><a href="index.html" class="nav-link"><span class="nav-icon">🏠</span>Home</a></li>
+    <li><a href="about.html" class="nav-link"><span class="nav-icon">👤</span>About</a></li>
+    <li><a href="skills.html" class="nav-link"><span class="nav-icon">⚡</span>Skills</a></li>
+    <li><a href="projects.html" class="nav-link"><span class="nav-icon">💼</span>Projects</a></li>
+    <li><a href="resume.html" class="nav-link"><span class="nav-icon">📄</span>Resume</a></li>
+    <li><a href="contact.html" class="nav-link"><span class="nav-icon">✉️</span>Contact</a></li>
+  </ul>
+
+  <div class="sidebar-footer">
+    <button id="themeToggle" class="theme-toggle" type="button">🌙 Dark mode</button>
+  </div>
+</nav>
+<div class="nav-overlay" id="navOverlay"></div>
+
+
+<main class="main">
+
+  <section class="hero">
+    <div class="hero-text reveal">
+      <span class="eyebrow">Welcome to my portfolio</span>
+      <h1>Hi, I'm <span class="hero-name">Jezriel D. Alabastro</span></h1>
+      <p class="typed-line">I am a <span id="typed" class="typed"></span><span class="caret"></span></p>
+      <p class="lead">
+        A 20-year-old BSINT student from Basay, Negros Oriental. I build desktop applications with
+        Java and C++, create 2D animations with Adobe Animate, and I'm always looking for a new
+        problem to solve — on the screen or on the chessboard.
+      </p>
+
+      <div class="hero-actions">
+        <a href="projects.html" class="btn btn-primary">View My Projects →</a>
+        <a href="contact.html" class="btn btn-ghost">Contact Me</a>
+      </div>
+
+      <ul class="hero-stats">
+        <li><strong>3rd</strong><span>Year BSINT</span></li>
+        <li><strong>5+</strong><span>Projects Built</span></li>
+        <li><strong>1</strong><span>Cisco Certificate</span></li>
+      </ul>
+    </div>
+
+    <div class="hero-photo reveal">
+      <div class="img-slot img-slot--avatar" data-label="Add your photo → images/profile.jpg">
+        <img src="images/jez.jpg" alt="Portrait of Jezriel D. Alabastro">
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="cta-banner">
+      <div>
+        <h2>Let's build something together</h2>
+        <p>I'm open to school collaborations, freelance practice projects and learning opportunities.</p>
+      </div>
+      <a href="contact.html" class="btn btn-primary">Get in touch →</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>&copy; <span class="year">2025</span> Jezriel D. Alabastro. All rights reserved.</p>
+    <p>Built with HTML, CSS &amp; JavaScript.</p>
+  </footer>
+
+</main>
+
+<button class="to-top" id="toTop" type="button" aria-label="Scroll back to top">↑</button>
+<script src="js/main.js"></script>
+</body>
+</html>

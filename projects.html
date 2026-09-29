@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Projects by Jezriel D. Alabastro — Java desktop systems, C++ programs, and Adobe Animate creations.">
+<title>Projects | Jezriel D. Alabastro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a href="index.html" class="topbar-brand"><span class="brand-mark">JA</span> Jezriel D. Alabastro</a>
+  <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebar">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<nav class="sidebar" id="sidebar" aria-label="Main navigation">
+  <div class="brand">
+    <span class="brand-mark">JA</span>
+    <span class="brand-name">Jezriel D.<small>Alabastro</small></span>
+  </div>
+  <ul class="nav-list">
+    <li><a href="index.html" class="nav-link"><span class="nav-icon">🏠</span>Home</a></li>
+    <li><a href="about.html" class="nav-link"><span class="nav-icon">👤</span>About</a></li>
+    <li><a href="skills.html" class="nav-link"><span class="nav-icon">⚡</span>Skills</a></li>
+    <li><a href="projects.html" class="nav-link"><span class="nav-icon">💼</span>Projects</a></li>
+    <li><a href="resume.html" class="nav-link"><span class="nav-icon">📄</span>Resume</a></li>
+    <li><a href="contact.html" class="nav-link"><span class="nav-icon">✉️</span>Contact</a></li>
+  </ul>
+  <div class="sidebar-footer">
+    <button id="themeToggle" class="theme-toggle" type="button">🌙 Dark mode</button>
+  </div>
+</nav>
+<div class="nav-overlay" id="navOverlay"></div>
+
+<main class="main">
+
+  <header class="page-head reveal">
+    <span class="eyebrow">Projects</span>
+    <h1>Things I have built</h1>
+    <p class="page-sub">A selection of school projects and personal practice builds made with Java, C++, Adobe Animate and web technologies.</p>
+  </header>
+
+  <div class="filter-bar reveal" role="group" aria-label="Filter projects by category">
+    <button class="filter-btn active" type="button" data-filter="all">All</button>
+    <button class="filter-btn" type="button" data-filter="java">Java</button>
+    <button class="filter-btn" type="button" data-filter="cpp">C++</button>
+    <button class="filter-btn" type="button" data-filter="animation">Animation</button>
+    <button class="filter-btn" type="button" data-filter="web">Web</button>
+  </div>
+
+  <section class="section">
+    <div class="grid grid-3">
+
+      <article class="card project-card reveal" data-category="java">
+        <div class="img-slot" data-label="Add image → images/project-skillhub.jpg">
+          <img src="images/norsu.png" alt="Screenshot of the NORSU Student Skill Hub application">
+        </div>
+        <div class="project-body">
+          <span class="project-type">Desktop Application</span>
+          <h3>NORSU Student Skill Hub</h3>
+          <p>
+            A Java desktop system where NORSU students can register, list their skills, and
+            browse other students' profiles. It uses a MySQL database for storing accounts
+            and skill records, with a simple Swing interface for adding and searching entries.
+          </p>
+          <ul class="tags">
+            <li class="tag">Java</li>
+            <li class="tag">Swing</li>
+            <li class="tag">MySQL</li>
+            <li class="tag">JDBC</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card project-card reveal" data-category="java">
+  <div class="img-slot" data-label="Add image → images/project-currency.jpg">
+    <img src="images/currency.png" alt="Screenshot of the Java Currency Converter application">
+  </div>
+  <div class="project-body">
+    <span class="project-type">Desktop Application</span>
+    <h3>Java Currency Converter</h3>
+    <p>
+      A desktop currency converter built in Java using NetBeans. It converts between
+      PHP, USD, EUR, JPY and other common currencies using preset exchange rates,
+      with a simple Swing interface for entering an amount, picking the "from" and
+      "to" currencies, and instantly viewing the converted result.
+    </p>
+    <ul class="tags">
+      <li class="tag">Java</li>
+      <li class="tag">NetBeans</li>
+      <li class="tag">Swing</li>
+      <li class="tag">Event Handling</li>
+    </ul>
+  </div>
+</article>
+
+      <article class="card project-card reveal" data-category="cpp">
+        <div class="img-slot" data-label="Add image → images/project-cpp-calc.jpg">
+          <img src="images/cpp.png" alt="Screenshot of a C++ calculator console output">
+        </div>
+        <div class="project-body">
+          <span class="project-type">Console Program</span>
+          <h3>Calculator &amp; Menu Programs (C++)</h3>
+          <p>
+            A set of small C++ practice programs, including a menu-driven calculator, a number
+            guessing game and a grade average solver. These were built to strengthen loops,
+            conditionals, functions and input validation.
+          </p>
+          <ul class="tags">
+            <li class="tag">C++</li>
+            <li class="tag">Functions</li>
+            <li class="tag">Logic</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card project-card reveal" data-category="animation">
+        <div class="img-slot" data-label="Add image → images/project-animation.jpg">
+          <img src="images/animate.png" alt="Frame from an Adobe Animate 2D animation project">
+        </div>
+        <div class="project-body">
+          <span class="project-type">2D Animation</span>
+          <h3>Animated Short Scenes</h3>
+          <p>
+            Short 2D animated scenes created in Adobe Animate. The project covers character
+            drawing, frame-by-frame animation, motion tweens, symbol reuse and simple scene
+            transitions with synchronized sound.
+          </p>
+          <ul class="tags">
+            <li class="tag">Adobe Animate</li>
+            <li class="tag">Motion Tween</li>
+            <li class="tag">Storyboard</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="card project-card reveal" data-category="web">
+        <div class="img-slot" data-label="Add image → images/project-portfolio.jpg">
+          <img src="images/portfolio.png" alt="Screenshot of this personal portfolio website">
+        </div>
+        <div class="project-body">
+          <span class="project-type">Website</span>
+          <h3>Personal Portfolio Website</h3>
+          <p>
+            This responsive six-page portfolio, hand-coded with HTML, CSS and JavaScript.
+            It includes a fixed sidebar navigation, dark/light mode, form validation,
+            scroll-to-top, accordions and animated skill bars.
+          </p>
+          <ul class="tags">
+            <li class="tag">HTML5</li>
+            <li class="tag">CSS3</li>
+            <li class="tag">JavaScript</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="cta-banner">
+      <div>
+        <h2>Interested in working together?</h2>
+        <p>Send me a message and let's talk about your idea.</p>
+      </div>
+      <a href="contact.html" class="btn btn-primary">Contact me →</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>&copy; <span class="year">2025</span> Jezriel D. Alabastro. All rights reserved.</p>
+    <p>Built with HTML, CSS &amp; JavaScript.</p>
+  </footer>
+
+</main>
+
+<button class="to-top" id="toTop" type="button" aria-label="Scroll back to top">↑</button>
+<script src="js/main.js"></script>
+</body>
+</html>
