@@ -1,0 +1,12 @@
+# Secrets: never upload database passwords
+includes/config.php
+.env
+
+# Uploaded files (keep the folder only)
+uploads/*
+!uploads/.gitkeep
+
+# System and editor files
+Thumbs.db
+.DS_Store
+.vscode/
