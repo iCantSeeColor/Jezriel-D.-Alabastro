@@ -14,7 +14,7 @@ $logoText  = $settings['logo_text'] ?? 'JA';
 $navItems = [
     ['index.php',     '🏠', 'Home'],
     ['about.php',    '👤', 'About'],
-    ['skills.html',   '⚡', 'Skills'],
+    ['skills.php',   '⚡', 'Skills'],
     ['projects.html', '💼', 'Projects'],
     ['resume.html',   '📄', 'Resume'],
     ['contact.html',  '✉️', 'Contact'],

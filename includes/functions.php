@@ -31,3 +31,8 @@ function get_education(PDO $pdo): array
 {
     return $pdo->query('SELECT * FROM education ORDER BY id ASC')->fetchAll();
 }
+
+function get_skills(PDO $pdo): array
+{
+    return $pdo->query('SELECT * FROM skills ORDER BY id ASC')->fetchAll();
+}
