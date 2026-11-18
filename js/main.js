@@ -100,7 +100,7 @@
     if (!links.length) return;
 
     var current = window.location.pathname.split('/').pop();
-    if (!current || current === '') current = 'index.html';
+    if (!current || current === '') current = 'index.php';
 
     links.forEach(function (link) {
       var href = link.getAttribute('href');
