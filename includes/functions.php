@@ -26,3 +26,8 @@ function count_rows(PDO $pdo, string $table): int
     }
     return (int) $pdo->query("SELECT COUNT(*) FROM `$table`")->fetchColumn();
 }
+
+function get_education(PDO $pdo): array
+{
+    return $pdo->query('SELECT * FROM education ORDER BY id ASC')->fetchAll();
+}
