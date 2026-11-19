@@ -122,3 +122,26 @@ table.data td {
   .admin-side nav { display: flex; flex-wrap: wrap; gap: 4px; }
   .admin-main { padding: 18px; }
 }
+
+/* ===== Forms inside admin pages ===== */
+.field textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #c3ccd5;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 1rem;
+  resize: vertical;
+}
+.field.has-error input,
+.field.has-error textarea { border-color: #c0392b; }
+.field .err { margin: 4px 0 0; color: #8a1f17; font-size: .85rem; }
+.alert.success { background: #e8f3ee; color: #0b5540; }
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 16px;
+}
+@media (max-width: 760px) {
+  .form-grid { grid-template-columns: 1fr; }
+}

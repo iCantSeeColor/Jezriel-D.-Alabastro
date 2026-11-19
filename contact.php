@@ -104,6 +104,15 @@ require __DIR__ . '/includes/header.php';
               <a href="mailto:<?= e($profile['email'] ?? '') ?>"><?= e($profile['email'] ?? '') ?></a>
             </div>
           </li>
+          <?php if (!empty($profile['phone'])): ?>
+          <li class="info-item">
+            <span class="info-icon">📞</span>
+            <div>
+              <strong>Phone</strong>
+              <span><?= e($profile['phone']) ?></span>
+            </div>
+          </li>
+          <?php endif; ?>
           <li class="info-item">
             <span class="info-icon">📍</span>
             <div>
