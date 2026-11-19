@@ -1,6 +1,6 @@
 <?php
 // Escape output so user-entered text can never run as HTML or JavaScript (XSS).
-function e($value): string
+function e(mixed $value): string
 {
     return htmlspecialchars((string) $value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 }
@@ -40,4 +40,14 @@ function get_skills(PDO $pdo): array
 function get_projects(PDO $pdo): array
 {
     return $pdo->query('SELECT * FROM projects ORDER BY id ASC')->fetchAll();
+}
+
+function get_experience(PDO $pdo): array
+{
+    return $pdo->query('SELECT * FROM experience ORDER BY id ASC')->fetchAll();
+}
+
+function get_achievements(PDO $pdo): array
+{
+    return $pdo->query('SELECT * FROM achievements ORDER BY id ASC')->fetchAll();
 }
