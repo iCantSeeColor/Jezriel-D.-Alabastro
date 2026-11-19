@@ -689,3 +689,11 @@ body.dark .site-footer { border-top-color: #1e4240; color: #88b8b0; }
   body { background: #ffffff; color: #000000; }
   .card, .timeline-item { box-shadow: none; border-color: #cccccc; }
 }
+
+.cert-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-top: 14px;
+  border-radius: 8px;
+}

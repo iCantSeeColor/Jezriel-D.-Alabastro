@@ -86,7 +86,11 @@ $achievements = get_achievements($pdo);
             <?php if (!empty($item['issuer'])): ?>
             <p><strong>Issued by:</strong> <?= e($item['issuer']) ?></p>
             <?php endif; ?>
-            <p><?= e($item['description']) ?></p>
+                        <p><?= e($item['description']) ?></p>
+            <?php if (!empty($item['image'])): ?>
+            <img src="<?= e($item['image']) ?>" alt="Certificate: <?= e($item['title']) ?>" class="cert-img">
+            <?php endif; ?>
+          </div>
           </div>
         </div>
       </div>
