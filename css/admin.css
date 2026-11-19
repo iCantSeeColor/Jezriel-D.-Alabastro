@@ -221,3 +221,11 @@ table.data small { color: #5b6773; font-weight: 400; }
   border-radius: 6px;
   overflow-wrap: anywhere;
 }
+
+.field label.radio {
+  display: inline-block;
+  margin: 0 16px 6px 0;
+  font-weight: 400;
+}
+.field label.radio input { width: auto; margin-right: 6px; }
+.field .hint { margin: 4px 0 0; color: #5b6773; font-size: .85rem; }

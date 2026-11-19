@@ -65,7 +65,8 @@
     var prefersDark = window.matchMedia &&
                       window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-    var theme = stored || (prefersDark ? 'dark' : 'light');
+    var defaultTheme = document.body.getAttribute('data-default-theme');
+    var theme = stored || defaultTheme || (prefersDark ? 'dark' : 'light');
     applyTheme(theme);
 
     function applyTheme(mode) {
