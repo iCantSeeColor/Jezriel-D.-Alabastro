@@ -198,3 +198,26 @@ table.data td {
   border: 1px solid #dde3e9;
   border-radius: 6px;
 }
+
+/* ===== Messages ===== */
+.tabs { display: flex; gap: 8px; margin-bottom: 14px; }
+.tabs a {
+  padding: 7px 14px;
+  border: 1px solid #c3ccd5;
+  border-radius: 6px;
+  background: #fff;
+  color: #1c2530;
+  font-size: .9rem;
+  text-decoration: none;
+}
+.tabs a.active { background: #0f6b4f; border-color: #0f6b4f; color: #fff; }
+tr.unread td { font-weight: 600; background: #f4faf7; }
+table.data small { color: #5b6773; font-weight: 400; }
+.msg-meta { color: #5b6773; font-size: .9rem; }
+.msg-body {
+  margin: 14px 0;
+  padding: 14px;
+  background: #f3f5f7;
+  border-radius: 6px;
+  overflow-wrap: anywhere;
+}
