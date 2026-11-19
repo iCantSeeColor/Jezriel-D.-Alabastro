@@ -145,3 +145,30 @@ table.data td {
 @media (max-width: 760px) {
   .form-grid { grid-template-columns: 1fr; }
 }
+
+/* ===== Tables and action buttons ===== */
+.row-actions { display: flex; gap: 8px; align-items: center; }
+.row-actions form { margin: 0; }
+.btn-link {
+  display: inline-block;
+  padding: 6px 12px;
+  border: 1px solid #c3ccd5;
+  border-radius: 6px;
+  background: #fff;
+  color: #1c2530;
+  font-size: .85rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-link:hover { background: #eef2f5; }
+.btn-danger {
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 6px;
+  background: #c0392b;
+  color: #fff;
+  font-size: .85rem;
+  cursor: pointer;
+}
+.btn-danger:hover { background: #a93226; }
+.form-actions { display: flex; gap: 10px; align-items: center; }
