@@ -53,3 +53,5 @@ body {
 .admin-card { max-width: 640px; margin: 40px auto; }
 .admin-card form { margin-top: 16px; }
 .btn-small { width: auto; padding: 8px 16px; }
+
+.alert.notice { background: #e8f3ee; color: #0b5540; }

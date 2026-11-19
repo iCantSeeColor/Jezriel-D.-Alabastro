@@ -8,14 +8,23 @@ if (admin_logged_in()) {
 }
 
 $error    = '';
+$notice   = '';
 $username = '';
 
+if (isset($_GET['timeout'])) {
+    $notice = 'You were logged out because of inactivity. Please log in again.';
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $ip       = client_ip();
     $username = trim((string) ($_POST['username'] ?? ''));
     $password = (string) ($_POST['password'] ?? '');
 
     if (!csrf_verify($_POST['csrf_token'] ?? null)) {
         $error = 'Your session expired. Please reload the page and try again.';
+    } elseif (login_is_locked($pdo, $ip)) {
+        // Locked: do not even check the password.
+        $error = 'Too many failed login attempts. Please try again in ' . LOGIN_LOCK_MINUTES . ' minutes.';
     } elseif ($username === '' || $password === '') {
         $error = 'Please enter your username and password.';
     } else {
@@ -29,11 +38,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $hash = $admin['password_hash'] ?? password_hash('placeholder-password', PASSWORD_DEFAULT);
 
         if ($admin && password_verify($password, $hash)) {
+            clear_failed_logins($pdo, $ip);
+
             // New session ID after login (prevents session fixation).
             session_regenerate_id(true);
             $_SESSION['admin_id']       = (int) $admin['id'];
             $_SESSION['admin_username'] = $admin['username'];
             $_SESSION['csrf_token']     = bin2hex(random_bytes(32));
+            $_SESSION['last_activity']  = time();
 
             // Upgrade the stored hash if PHP's recommended algorithm has changed.
             if (password_needs_rehash($admin['password_hash'], PASSWORD_DEFAULT)) {
@@ -45,8 +57,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit;
         }
 
-        // One generic message: never say whether the username or the password was wrong.
-        $error = 'Invalid username or password.';
+        // Failed: record it, then show one generic message
+        // (never say whether the username or the password was wrong).
+        record_failed_login($pdo, $ip, $username);
+        $remaining = LOGIN_MAX_ATTEMPTS - login_failed_count($pdo, $ip);
+
+        if ($remaining > 0) {
+            $error = 'Invalid username or password. Attempts remaining: ' . $remaining . '.';
+        } else {
+            $error = 'Too many failed login attempts. Please try again in ' . LOGIN_LOCK_MINUTES . ' minutes.';
+        }
     }
 }
 ?>
@@ -64,6 +84,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <div class="auth-card">
     <h1>Admin Login</h1>
     <p class="sub">Sign in to manage the portfolio.</p>
+
+    <?php if ($notice): ?>
+      <div class="alert notice" role="status"><?= e($notice) ?></div>
+    <?php endif; ?>
 
     <?php if ($error): ?>
       <div class="alert" role="alert"><?= e($error) ?></div>
