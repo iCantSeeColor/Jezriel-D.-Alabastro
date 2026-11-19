@@ -16,7 +16,7 @@ $certCount    = count_rows($pdo, 'achievements');
       <p class="lead"><?= e($profile['introduction'] ?? '') ?></p>
 
       <div class="hero-actions">
-        <a href="projects.html" class="btn btn-primary">View My Projects →</a>
+        <a href="projets.php" class="btn btn-primary">View My Projects →</a>
         <a href="contact.html" class="btn btn-ghost">Contact Me</a>
       </div>
 

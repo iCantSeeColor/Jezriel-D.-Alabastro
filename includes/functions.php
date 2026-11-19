@@ -36,3 +36,8 @@ function get_skills(PDO $pdo): array
 {
     return $pdo->query('SELECT * FROM skills ORDER BY id ASC')->fetchAll();
 }
+
+function get_projects(PDO $pdo): array
+{
+    return $pdo->query('SELECT * FROM projects ORDER BY id ASC')->fetchAll();
+}

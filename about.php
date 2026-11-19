@@ -86,7 +86,7 @@ $educationList = get_education($pdo);
         <h2>Want to see what I've built?</h2>
         <p>Take a look at my Java, C++ and animation projects.</p>
       </div>
-      <a href="projects.html" class="btn btn-primary">View projects →</a>
+      <a href="projets.php" class="btn btn-primary">View projects →</a>
     </div>
   </section>
 
