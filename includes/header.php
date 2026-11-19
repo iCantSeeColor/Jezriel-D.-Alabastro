@@ -1,5 +1,6 @@
 <?php
 $pageTitle = $pageTitle ?? 'Portfolio';
+// Shared page top. Expects $pdo and $pageTitle to be set before it is included.
 require_once __DIR__ . '/functions.php';
 
 $profile  = get_profile($pdo);
@@ -9,13 +10,23 @@ $fullName  = $profile['full_name'] ?? 'Portfolio';
 $nameParts = explode(' ', trim($fullName));
 $lastName  = count($nameParts) > 1 ? array_pop($nameParts) : '';
 $firstName = implode(' ', $nameParts);
-$logoText  = $settings['logo_text'] ?? 'JA';
+
+// Website settings (managed in the admin dashboard)
+$siteTitle    = $settings['site_title'] ?? $fullName;
+$logoText     = $settings['logo_text'] ?? 'JA';
+$logoImage    = $settings['logo_image'] ?? '';
+$defaultTheme = (($settings['default_theme'] ?? 'light') === 'dark') ? 'dark' : 'light';
+
+// Logo: the uploaded image if there is one, otherwise the logo text (already escaped).
+$logoHtml = !empty($logoImage)
+    ? '<span class="brand-mark brand-mark--img"><img src="' . e($logoImage) . '" alt=""></span>'
+    : '<span class="brand-mark">' . e($logoText) . '</span>';
 
 $navItems = [
-    ['index.php',     '🏠', 'Home'],
+    ['index.php',    '🏠', 'Home'],
     ['about.php',    '👤', 'About'],
     ['skills.php',   '⚡', 'Skills'],
-    ['projets.php', '💼', 'Projects'],
+    ['projects.php', '💼', 'Projects'],
     ['resume.php',   '📄', 'Resume'],
     ['contact.php',  '✉️', 'Contact'],
 ];
@@ -26,16 +37,16 @@ $navItems = [
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="<?= e($profile['headline'] ?? '') ?>">
-<title><?= e($pageTitle) ?> | <?= e($fullName) ?></title>
+<title><?= e($pageTitle) ?> | <?= e($siteTitle) ?></title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-default-theme="<?= e($defaultTheme) ?>">
 
 <header class="topbar">
-  <a href="index.php" class="topbar-brand"><span class="brand-mark"><?= e($logoText) ?></span> <?= e($fullName) ?></a>
+  <a href="index.php" class="topbar-brand"><?= $logoHtml ?> <?= e($fullName) ?></a>
   <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="sidebar">
     <span></span><span></span><span></span>
   </button>
@@ -43,7 +54,7 @@ $navItems = [
 
 <nav class="sidebar" id="sidebar" aria-label="Main navigation">
   <div class="brand">
-    <span class="brand-mark"><?= e($logoText) ?></span>
+    <?= $logoHtml ?>
     <span class="brand-name"><?= e($firstName) ?><small><?= e($lastName) ?></small></span>
   </div>
   <ul class="nav-list">
