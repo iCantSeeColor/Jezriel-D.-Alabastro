@@ -36,8 +36,10 @@ $categories = array_values(array_unique(array_column($projects, 'category')));
     <div class="grid grid-3">
       <?php foreach ($projects as $project): ?>
       <article class="card project-card reveal" data-category="<?= e($project['category']) ?>">
-        <div class="img-slot" data-label="Project image">
+               <div class="img-slot" data-label="Project image">
+          <?php if (!empty($project['image'])): ?>
           <img src="<?= e($project['image']) ?>" alt="Screenshot of <?= e($project['title']) ?>">
+          <?php endif; ?>
         </div>
         <div class="project-body">
           <span class="project-type"><?= e($project['project_type']) ?></span>
