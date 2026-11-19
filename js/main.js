@@ -200,8 +200,6 @@
     });
 
     form.addEventListener('submit', function (event) {
-      event.preventDefault();
-
       var isValid = true;
       var firstInvalid = null;
 
@@ -213,6 +211,9 @@
       });
 
       if (!isValid) {
+        /* Stop the form only when something is wrong. */
+        event.preventDefault();
+
         if (status) {
           status.textContent = '⚠ Please fix the highlighted fields and try again.';
           status.className = 'form-status error';
@@ -221,19 +222,8 @@
         return;
       }
 
-      var senderName = form.elements.name.value.trim();
-
-      if (status) {
-        status.textContent = '✓ Thank you, ' + senderName +
-          '! Your message has been validated successfully. I will get back to you soon.';
-        status.className = 'form-status success';
-      }
-
-      form.reset();
-
-      form.querySelectorAll('.form-group').forEach(function (group) {
-        group.classList.remove('success', 'error');
-      });
+      /* Validation passed: the browser submits the form to contact.php,
+         where PHP validates again and saves the message. */
     });
   }
 

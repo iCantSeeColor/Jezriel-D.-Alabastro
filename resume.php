@@ -101,7 +101,7 @@ $achievements = get_achievements($pdo);
         <h2>Want a copy of my resume?</h2>
         <p>Use the print button above, or send me a message and I'll get back to you.</p>
       </div>
-      <a href="contact.html" class="btn btn-primary">Contact me →</a>
+      <a href="contact.php" class="btn btn-primary">Contact me →</a>
     </div>
   </section>
 

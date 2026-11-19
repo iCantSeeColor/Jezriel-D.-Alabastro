@@ -63,7 +63,7 @@ $categories = array_values(array_unique(array_column($projects, 'category')));
         <h2>Interested in working together?</h2>
         <p>Send me a message and let's talk about your idea.</p>
       </div>
-      <a href="contact.html" class="btn btn-primary">Contact me →</a>
+      <a href="contact.php" class="btn btn-primary">Contact me →</a>
     </div>
   </section>
 

@@ -51,3 +51,10 @@ function get_achievements(PDO $pdo): array
 {
     return $pdo->query('SELECT * FROM achievements ORDER BY id ASC')->fetchAll();
 }
+
+// Allow only http(s) links, so a saved "javascript:" URL can never become a clickable link.
+function safe_url(?string $url): string
+{
+    $url = trim((string) $url);
+    return preg_match('#^https?://#i', $url) ? $url : '#';
+}

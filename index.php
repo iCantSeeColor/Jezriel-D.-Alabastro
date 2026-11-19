@@ -17,7 +17,7 @@ $certCount    = count_rows($pdo, 'achievements');
 
       <div class="hero-actions">
         <a href="projets.php" class="btn btn-primary">View My Projects →</a>
-        <a href="contact.html" class="btn btn-ghost">Contact Me</a>
+        <a href="contact.php" class="btn btn-ghost">Contact Me</a>
       </div>
 
       <ul class="hero-stats">
@@ -40,7 +40,7 @@ $certCount    = count_rows($pdo, 'achievements');
         <h2>Let's build something together</h2>
         <p>I'm open to school collaborations, freelance practice projects and learning opportunities.</p>
       </div>
-      <a href="contact.html" class="btn btn-primary">Get in touch →</a>
+      <a href="contact.php" class="btn btn-primary">Get in touch →</a>
     </div>
   </section>
 

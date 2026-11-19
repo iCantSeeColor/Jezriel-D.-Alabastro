@@ -17,7 +17,7 @@ $navItems = [
     ['skills.php',   '⚡', 'Skills'],
     ['projets.php', '💼', 'Projects'],
     ['resume.php',   '📄', 'Resume'],
-    ['contact.html',  '✉️', 'Contact'],
+    ['contact.php',  '✉️', 'Contact'],
 ];
 ?>
 <!DOCTYPE html>
