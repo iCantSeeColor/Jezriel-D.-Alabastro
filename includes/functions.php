@@ -58,3 +58,8 @@ function safe_url(?string $url): string
     $url = trim((string) $url);
     return preg_match('#^https?://#i', $url) ? $url : '#';
 }
+
+function count_unread_messages(PDO $pdo): int
+{
+    return (int) $pdo->query('SELECT COUNT(*) FROM messages WHERE is_read = 0')->fetchColumn();
+}
