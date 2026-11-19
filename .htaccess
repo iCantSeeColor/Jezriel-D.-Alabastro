@@ -1,0 +1,27 @@
+# Do not list folder contents
+Options -Indexes
+
+# Hide Git folders and .env files from the web
+RedirectMatch 404 /\.git
+<FilesMatch "^\.env">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Security headers
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+# LIVE SITE ONLY: force HTTPS. Uncomment these 3 lines after HTTPS is enabled on your host.
+# Do NOT enable them on local XAMPP, because it has no HTTPS set up and the site would break.
+# RewriteEngine On
+# RewriteCond %{HTTPS} off
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
