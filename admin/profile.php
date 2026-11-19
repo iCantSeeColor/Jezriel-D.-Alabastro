@@ -1,6 +1,7 @@
 <?php
 require __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/auth.php';
+require_once __DIR__ . '/../includes/upload.php';
 require_admin();
 
 $adminTitle = 'Profile';
@@ -65,6 +66,17 @@ if ($profile && $_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
 
+        // ----- Secure image upload (only when the text fields are valid and a file was chosen) -----
+        $newImage = null;
+        if (!$errors && isset($_FILES['profile_image']) && $_FILES['profile_image']['error'] !== UPLOAD_ERR_NO_FILE) {
+            $result = save_uploaded_image($_FILES['profile_image']);
+            if (isset($result['error'])) {
+                $errors['profile_image'] = $result['error'];
+            } else {
+                $newImage = $result['path'];
+            }
+        }
+
         // ----- Save with a prepared statement -----
         if (!$errors) {
             try {
@@ -75,7 +87,7 @@ if ($profile && $_SERVER['REQUEST_METHOD'] === 'POST') {
                         email = :email, phone = :phone, location = :location,
                         school = :school, github_url = :github_url,
                         facebook_url = :facebook_url, linkedin_url = :linkedin_url,
-                        instagram_url = :instagram_url
+                        instagram_url = :instagram_url, profile_image = :profile_image
                      WHERE id = :id'
                 );
                 $stmt->execute([
@@ -91,14 +103,23 @@ if ($profile && $_SERVER['REQUEST_METHOD'] === 'POST') {
                     ':facebook_url'  => $data['facebook_url'] !== '' ? $data['facebook_url'] : null,
                     ':linkedin_url'  => $data['linkedin_url'] !== '' ? $data['linkedin_url'] : null,
                     ':instagram_url' => $data['instagram_url'] !== '' ? $data['instagram_url'] : null,
+                    ':profile_image' => $newImage ?? ($profile['profile_image'] ?? null),
                     ':id'            => $profile['id'],
                 ]);
+
+                // The new photo is saved: remove the old uploaded photo (if it was one of our uploads).
+                if ($newImage !== null) {
+                    delete_uploaded_image($profile['profile_image'] ?? null);
+                }
 
                 $_SESSION['admin_flash'] = 'Profile updated successfully.';
                 header('Location: profile.php'); // redirect so a refresh does not resubmit
                 exit;
             } catch (PDOException $ex) {
                 error_log('Profile update failed: ' . $ex->getMessage());
+                if ($newImage !== null) {
+                    delete_uploaded_image($newImage); // do not leave an orphan file behind
+                }
                 $formError = 'The profile could not be saved. Please try again.';
             }
         }
@@ -143,8 +164,18 @@ require __DIR__ . '/../includes/admin_header.php';
     <?php if (!$profile): ?>
       <div class="alert" role="alert">Profile record not found. Re-import database/portfolio.sql.</div>
     <?php else: ?>
-    <form method="post" action="profile.php" class="panel">
+    <form method="post" action="profile.php" class="panel" enctype="multipart/form-data">
       <?= csrf_field() ?>
+
+      <h2>Profile photo</h2>
+      <?php if (!empty($profile['profile_image'])): ?>
+        <img src="../<?= e($profile['profile_image']) ?>" alt="Current profile photo" class="avatar-preview">
+      <?php endif; ?>
+      <div class="field<?= isset($errors['profile_image']) ? ' has-error' : '' ?>">
+        <label for="profile_image">Upload a new photo (JPG, PNG, WEBP or GIF, max 2 MB)</label>
+        <input type="file" id="profile_image" name="profile_image" accept="image/jpeg,image/png,image/webp,image/gif">
+        <?php if (isset($errors['profile_image'])): ?><p class="err"><?= e($errors['profile_image']) ?></p><?php endif; ?>
+      </div>
 
       <h2>Personal information</h2>
       <div class="form-grid">

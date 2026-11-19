@@ -172,3 +172,13 @@ table.data td {
 }
 .btn-danger:hover { background: #a93226; }
 .form-actions { display: flex; gap: 10px; align-items: center; }
+
+.avatar-preview {
+  display: block;
+  width: 120px;
+  height: 120px;
+  margin: 0 0 12px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid #dde3e9;
+}

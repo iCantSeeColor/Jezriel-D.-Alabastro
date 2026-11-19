@@ -2,9 +2,10 @@
 includes/config.php
 .env
 
-# Uploaded files (keep the folder only)
+# Uploaded files (keep the folder and its protection only)
 uploads/*
 !uploads/.gitkeep
+!uploads/.htaccess
 
 # System and editor files
 Thumbs.db
